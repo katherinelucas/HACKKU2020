@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,700|Quattrocento:700');
+@import url('https://fonts.googleapis.com/css?family=Teko&display=swap');
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: lighter;
+    background: white;
+}
+
+body.dark {
+	font-family: 'Teko', sans-serif;
+	font-size: 18pt;
+    background: #BE8ABE;
+    color: white;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 14pt;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 0pt;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-size: 14pt;
+    font-style: italic;
+    font-family: sans-serif;
+    font-weight: lighter;
+    color: #f1f8ef;
+}
+
+.dark h2 {
+    color: #87296a;
+}
+
+.header {
+    padding-top: 0em;
+    padding-bottom: 0em;
+}
+
+h3.written-in-ink {
+    font-size: 9pt;
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: 700;
+    position: fixed;
+    display: block;
+    width: 100%;
+    background: white;
+    margin: 0;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    top: 0;
+}
+
+.dark h3.written-in-ink {
+    background: #BE8ABE;
+}
+
+
+/* Seems necessary to make iframes work on itch.io on mobile iOS :-( */
+.outerContainer {
+    position: absolute;
+    display: block;
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 4em;
+    background: white;
+}
+
+.dark .container {
+    background: #BE8ABE;
+}
+
+p { 
+    font-size: 22pt;
+    color: white;
+    line-height: 1.7em;
+    font-weight: lighter;
+    text-align: justify;
+}
+
+a {
+    font-weight: 700;
+    color: #b97c2c;
+    font-size: 26pt;
+    font-family: 'Teko', sans-serif;
+    transition: color 0.6s;
+    text-decoration: none;
+}
+
+.dark a {
+    color: #53103b;
+    transition: color 0.6s;
+}
+
+
+a:hover {
+    color: black;
+    transition: color 0.1s;
+}
+
+.dark a:hover {
+    color: white;
+}
+
+strong {
+    color: black;
+    font-weight: bold;
+}
+
+.dark strong {
+    color: white;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.container .hide {
+    opacity: 0.0;
+}
+
+.container .invisible {
+    display: none;
+}
+
+.container * {
+    opacity: 1.0;
+    transition: opacity 1.0s;
+}
+
+p.choice {
+    text-align: center;
+    line-height: 1.7em;
+}
+
+/* first choice */
+:not(.choice) + .choice {
+    padding-top: 1em; 
+}
+
+
+p.choice a {
+    font-size: 26pt;
+}
+
+/* Built in class if you want to write:
+     The End # CLASS: end
+*/
+.end {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.dark .end {
+    color: white;
+}
+
+.title {
+	font-family: 'VT323', monospace;
+	text-align: center;
+	font-size: 36pt;
+	font-weight: bold;
+}
+
+.stats {
+	text-align: center;
+}
