@@ -1,0 +1,379 @@
+# theme: dark
+# author: Katelyn Blackburn, Katie Lucas, Aidan Schmelzle, Lauren Semple
+
+VAR mind = 5
+VAR curiosity = 5
+VAR aggression = 5
+VAR charisma = 5
+
+<style>
+ # @import url('https://fonts.googleapis.com/css?family=Teko&display=swap');
+ # @import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
+</style>
+
+
+First Days in Centaurus A  # CLASS: title
+-> start
+
+=== function lower(ref x)
+ 	~ x = x - 1
+
+ === function raise(ref x)
+ 	~ x = x + 1
+
+=== start ===
+You never forget your first...starship, that is. You've been told your first few days as a galactic fleet member can shape your whole career. No pressure though. 
+
+Two teams are leaving for on-planet missions. A security detail is leading an expedition to a planet covered mostly by sea. A research team is heading to a jungle planet, which looks entirely green from the ship's window. Which team will you join?
+    + [Ocean Planet]  -> aggro_planet_1 
+    + [Jungle Planet] -> peace_planet_1 
+
+=== aggro_planet_1 ===
+
+When you land it seems that tensions are high among the planet's inhabitants. Will you:
+    +[Join in the conflict.] -> aggro_fight_1
+    +[Charter a peace treaty.] -> aggro_negotiate_1
+    
+=== aggro_fight_1 ===
+
+~ raise(aggression)
+As soon as you land on planet, a local shouts something at you that you don't understand, but from context you guess it was an insult. You approach them fists clenched and gain +1 Aggression. They lunge at you with what looks like a very sharp knife.
+    + [Pull your own standard fleet issue knife.] 
+        You raise your knife and the local backs off and turns to go yell at someone else. 
+        You gain +1 Aggression. 
+        ~ raise(aggression)
+        ->day_2
+    + [Turn on your heels and run.]
+        You make the, some might say cowardly, but ultimately smart decision to run. You know yourself, and getting stabbed is not on your five year plan. 
+        You gain +1 Mind.
+        ~ raise(mind)
+        ->day_2
+
+=== aggro_negotiate_1 ===
+
+Upon touch down, you are immediately taken into custody by the ruling family of the city in which you landed. You tell a few jokes, make the princess blush, and they trust you enough to ask for help. You gain +1 Charisma. They are looking for advice on how to discourage a growing uprising among their citizens.
+~raise(charisma)
+    + [Use your experience as a fleet union rep to negotiate a contract.]
+        The ore miner's strike ends after weeks of negotiations but the citizens leave with a 290 terashake work day (approx. 8 Earth hours). 
+        You gain +1 Mind and +1 Charisma.
+        ~raise(mind)
+        ~raise(charisma)
+        -> day_2
+    +[Take the "speak softly and carry a big stick" approach.]
+        The royals shut off the water supply until the leaders of the uprising are silenced. You leave the planet soon after, as you have the feeling this temporary silence isn't going to last. 
+        You gain +1 Aggression and lose -1 Curiosity. 
+        ~raise(aggression)
+        ~lower(curiosity)
+        ->day_2
+
+=== peace_planet_1 === 
+
+When you land, you encounter a harmonious society with unique customs, unfamiliar to you. Will you:
+
+    +[Observe from afar, so as not to influence their actions.] -> peace_observe_1
+    +[Go ahead and make yourself right at home, baby!] -> peace_interact_1
+    
+=== peace_observe_1 ===
+
+You wander into the jungle with the fleet's botanists. There are plants that shake your hand when you touch them, plants that let out a soothing note when the wind blows past them, and even a plant that smells to each member of your team like their own grandmother's perfume. You gain +1 Mind.
+    ~raise(mind)
+    +[Sketch each plant and note their curiosities in your... space trapper keeper.]
+        You develop a detailed log of this planet's flora. It will be published in the botanists book about this trip. Your first journal publication! 
+        You gain +1 Mind and +1 Curiosity.
+        ~raise(mind)
+        ~raise(curiosity)
+        -> day_2
+    +[You can't help it. You steal the grandma plant. You miss her so much.]
+        It kinda goes against your "just observe" philosophy but you return to the ship with your plant. As time goes on the smell morphs and it begins to remind you more of a mildewy shower curtain. It starts to get on your nerves and gives you a headache. 
+        You gain +1 Aggression and lose -1 Curiosity.
+        ~lower(curiosity)
+        ~raise(aggression)
+        ->day_2
+        
+=== peace_interact_1 ===
+
+You wander through the village looking for a way to pass the day. You step into what seems to be a shop selling produce and clothes. The shop keeper looks distressed and waves you over behind the counter before they run off through some doors into the back. You are left manning the front. 
+You gain +1 Curiosity. 
+
+The customers stream in and there is a distinct language barrier.
+    ~raise(curiosity)
+    + [This is quite literally NOT YOUR JOB! Just leave.]
+        You walk away and are too nervous look back. You hear shouting and soon someone runs past you with arms full of produce. Whoops. 
+        You lose -1 Curiosity and -1 Charisma.
+        ~lower(curiosity)
+        ~lower(charisma)
+        ->day_2
+    +[You've always liked charades. Pantomime filling a shopping cart with groceries and give lots of thumbs ups.]
+        You sell a lot of stuff! You don't know how to read the language or understand the system of currency so you're not sure you turned a profit, but the shopkeeper doesn't seem too mad when they return. 
+        You gain +1 Curiosity and +1 Charisma.
+        ~raise(curiosity)
+        ~raise(charisma)
+        -> day_2
+        
+=== day_2 ===
+//Intro
+Day 2: # CLASS: title
+
+The next day you find your ship approaching two new planets in the galaxy. One is a glowing, lush planet full of life while the other appears to be a red desert wasteland. You decide to travel to:
+    +[The bioluminescent planet.] 
+    -> peace_planet_2 
+    +[The dusty red planet.] 
+    ->aggro_planet_2
+    
+=== aggro_planet_2 ===
+Something about the emptiness of the cities and the skittishness of the residents intrigues you about this planet. During your day, you decide to:
+    +[Negotiate your crew's stay with desert planet.]
+        -> aggro_negotiate_2
+    +[Explore the wasteland.]
+        -> aggro_fight_2
+        
+=== peace_planet_2 ===
+The beauty of the planet catches your eye and you can't help but want to learn more about it. During your day, you decide to:
+    +[Learn the luscious planet's magic.]
+        -> peace_interact_2
+    +[Observe the sweet, sweet society.]
+        -> peace_observe_2
+
+=== aggro_negotiate_2 ===
+~raise(mind)
+You choose to visit the courts of a red desert planet to negotiate how long your spaceship can occupy the planet with your ship's captain. You gain +1 Mind. The members express anger that you won't be leaving immediately. One throws a shoe at you. You react by:
+    +[Negotiate peacefully.]
+    Calmly hand the shoe back, wink, and plead your case to the citizens. A sneaker never bothered you, anyway. You gain +1 Charisma, +1 Mind, and lose -1 Aggression.
+             ~raise(charisma) 
+            ~raise(mind) 
+            ~lower(aggression)
+           -> day_3
+    +[Get pissed.]
+        Demand you be treated with respect and be permitted to stay. You throw the shoe back with double force. She cries. Captain won't dig that...
+        You gain +1 Aggression and lose -1 Charisma.
+        ~raise(aggression) 
+        ~lower(charisma)
+        -> day_3
+        
+=== aggro_fight_2 ===
+~raise(aggression)
+You choose to take a walk lookin' for a fight. The red dust from the planet's desert soil kicks up in your face and you wish you had goggles like the locals you see around. You come across a small  child with six arms being kicked on the ground by an older looking man in the alley and it insights fury within you. You gain +1 Aggression. "I'm sorry I don't have the money yet!" the kid cries. You:
+    +[Forget that kid.]
+    It's that kid's fault for not having the money. What are you, space Batman? It's best not to get involved in that. You put your hands in your pockets, avert your eyes, and speed walk away.
+        You gain +1 Aggression, +1 Mind, and -1 Charisma.
+        ~raise(aggression)
+        ~raise(mind)
+        ~lower(charisma)
+        -> day_3
+    +[Stop the fight.]
+        Hey, what the frunk! No kids are getting beat up on YOUR watch. You dive into the fight and punch the guy in the gullet. K-O!
+        You gain +1 Aggression and +1 Charisma.
+        ~raise(aggression)
+        ~raise(charisma)
+        -> day_3
+    
+    === peace_observe_2 ===
+    ~raise(curiosity)
+    You decide to see what life's like on a planet famous for its bioluminescent plant life. You gain +1 Curiosity. You hop in to help locals struggling to load boxes on a heavy buggy. A beautiful blue woman comes up and starts gesturing at the buggy, chatting with you in a foreign language. She's so pretty, you feel super embarrassed when she doesn't speak Common and you don't speak her language. You:
+        +[Help anyways.]
+            You give her a shy smile and start loading the buggy, hoping whatever she's trying to tell you isn't that there's an animal in the box about to maul you. You shrug in a universal 'sorry' motion and make a heart with your hands. She giggles and gives you a thumbs up. Score! 
+               You gain +1 Charisma and +1 Curiosity.
+                ~raise(charisma)
+                ~raise(curiosity)
+                -> day_3
+        +[Make a break for it.]
+                You point at something behind her and let out a high pitched scream. She squeaks and twirls around, alarmed, and you hoof it in the opposite direction. One day you'll be able to talk to a pretty girl successfully, but it wasn't today. And you flippin' scared her. Ugh, classic. 
+                    You gain +1 Aggression and -1 Charisma.
+                    ~lower(charisma)
+                    ~raise(aggression)
+                    -> day_3
+    
+    === peace_interact_2 ===
+    ~raise(mind)
+   From the window of your room aboard the ship you can't help but be entranced by the bioluminescent lights emitting from the plant life on a planet far below. You decide to head down planet-side and spend the day learning about the planet's mysterious forces from their local University of Mysterious Forces. You gain +1 Mind. While there, you:
+        +[Attend class.]
+        You sneak into the back of a classroom, admiring the local's blue tails as you listen intently to the lecture. The classroom is half inside the building and half outside, with rocks instead of desks. With a few words and a wave of her hand, one of the flowers outside grows twice its size. Wicked.
+            You gain +1 Mind and +1 Curiosity.
+            ~raise(mind)
+            ~raise(curiosity)
+            -> day_3
+        +[Steal a mysterious tome.]
+            While walking down the hallway, you spot an empty library with wide windows and a glowing book with gold writing down the spine. You slowly walk up to the book and slide it into your satchel. Time to make a hasty exit and study this in private. You get a paper cut, serves you right!
+             You gain +1 Curiosity, +1 Aggression, and -1 Charisma.
+            ~raise(curiosity)
+            ~raise(aggression)
+            ~lower(charisma)
+            -> day_3
+            
+===day_3===
+Day 3: # CLASS: title
+
+Today is your last day of exploring new planets before the real work begins. There are two more planets that need your attention but you only have time to visit one. One planet is covered by cities and towns. There is almost no open land, so you’re bound to talk to many people. The other planet is completely mountainous. There are beautiful peaks, but also dangerous sharp ridges and drops. Which planet will you go visit?
+	+[Mountain Planet]-> aggro_planet_3 
+	+[City Planet]-> peace_planet_3 
+
+
+===aggro_planet_3===
+The harsh terrain makes it hard to travel far quickly on this planet. You can decide to walk to the town you landed near and talk to the locals or you can go visit the wild tribes in the surrounding area. Which would you like to do?
+    +[Go to town.]->fight_day_3
+    +[Visit the tribes.]->negotiate_day_3
+
+=== negotiate_day_3 ===
+~raise(charisma)
+You find that tension between the two major tribes on this planet has increased in recent years. Their conflicts have started spilling over into other citizens’ lives. They have asked you for help. You gain +1 Charisma. Will you:
+	+[Make peace.]
+		You negotiate a peace treaty between the two tribes. They shower you with praise, gratitude, and riches! Woohoo! Make it rain.
+		You gain +1 Charisma and +1 Mind.
+		~raise(charisma)
+		~raise(mind)
+		->endgame
+	+[Pit them against each other.]
+		You slyly pit the tribes against each other, taking advantage of their fighting and distraction to steal the riches for yourself! Mwahahaha! A kid gives you a side-eye and you stick your tongue out at the lil twerp.
+		You gain +1 Aggression and +1 Mind.
+		~raise(aggression)
+        ~raise(mind)
+        ->endgame
+
+===fight_day_3===
+~raise(aggression)
+One of the locals has the gall to insult you! They challenge you to a fight even! How dare they! You must retaliate. You gain +1 Aggression. Will you:
+	+[Insult them back!]
+		You know the exact insult to say to hit ‘em where it hurts the most! Everyone laughs at them and they are shamed!
+		You gain +1 Charisma and +1 Mind.
+		~raise(charisma)
+		~raise(mind)
+		->endgame
+	+[Punch ‘em in the teeth!]
+		You sock ‘em right in the teeth, what else!? They deserve it for being so rude to you. Hope you knocked out a tooth or two!
+		You gain +1 Aggression and lose -1 Mind.
+		~raise(aggression)
+		~lower(mind)
+		->endgame
+
+
+===peace_planet_3===
+~raise(curiosity)
+This planet is busy, busy, busy! People are zooming everywhere, but the building are all so beautiful! There are so many things to do here and people to see, it's overwhelming! You decide you'd either like to go to the largest building you can see, or the one with strange sounds coming out of it. You gain +1 curiosity. Which will it be?
+    +[Biggest building you can see.]->observe_day_3
+    +['Strange sounds' seems intriguing.]->interact_day_3
+
+
+===observe_day_3===
+You decide to visit the archives. The shelves tower above you and are filled with books! From what you can tell, this room is full of every bit of knowledge this planet has to offer. Will you:
+	+[Read books.]
+		You take advantage of the knowledge you’re surrounded by! You sit down and spend hours reading through books thicker than your own head. By the end of the day you’re bursting with knowledge!
+		You gain +1 Mind and +1 Curiosity.
+		~raise(mind)
+		~raise(curiosity)
+		->endgame
+	+[Prank teens.]
+		You prank all the nerds reading in the stacks! They are making it so easy, just sitting there and reading. Who would choose to read when you could be having fun? Not you!
+		You gain +1 Aggression and lose -1 Mind.
+		~raise(aggression)
+		~lower(mind)
+		->endgame
+
+===interact_day_3===
+The strange sounds were coming from all kinds of this planet's creatures! The building you walked into was a shelter for lonely creatures. You decide on a whim to adopt the cutest one you can find. It is immediately attached to you and wants to follow you everywhere! Will you:
+	+[Love it tons.]
+		You become as attached to your new companion as it is to you! You bring it with you wherever you go and everyone you meet from now on knows you have a faithful companion by your side!
+		You gain +1 Curiosity, +1 Charisma, and lose -1 Aggression.
+		~raise(curiosity)
+		~raise(charisma)
+		~lower(aggression)
+		->endgame
+	+[Leave it alone.]
+		It’s too much work to keep your new pet with you wherever you go. You have important things to do and it’s too hard to keep an eye on your pet all the time. You leave it alone on the ship at all times and don’t bother to go and see it much.
+		You lose -1 Charisma, -1 Curiosity, -1 Mind, and gain +1 Aggression.
+			~lower(charisma)
+			~lower(curiosity)
+			~lower(mind)
+			~raise(aggression)
+            ->endgame
+
+=== endgame ===
+You have established yourself as a member of your star fleet. It is time to choose a path. Consider what you love. Consider what you are good at. Cross your fingers it all works out.
+
+Your stats: # CLASS: title
+Mind: {mind} # CLASS: stats
+Curiosity:  {curiosity} # CLASS: stats
+Charisma: {charisma} # CLASS: stats
+Aggression: {aggression} # CLASS: stats
+
+Pick a profession: # CLASS: title
++[Engineer]
+-> eng
++[Anthropologist]
+-> anthro
++[Head of Security]
+-> sec
++[Captain]
+-> cap
+
+=== eng ===
+{mind>=7:
+You get promoted to head engineer aboard the ship you’ve been on! You get to continue to travel with the friends you’ve made and explore all the planets you can dream of. Maybe you can even go back and visit the planets you didn’t get to see this trip? Either way, getting to show off your skills as an engineer and have some adventure at the same time will be epic. It’s a dream come true and you can’t wait to get started!
+}
+
+{mind<7 && mind>4 :
+You continue your journey but are never able to get your articles published. Long after you are retired, a young colleague of yours publishes a paper that is suspiciously similar to an article you put up for publishing years ago about the long term effects of being docked on a planet with above average gravitational force. You are old and tired and won’t fight to have your name published as a collaborator, but you feel saddened that this is the route your colleague took when you would have been happy to mentor them from the start.
+}
+
+{mind<=4:
+You immediately get rejected for this job. You’ve made questionable decisions in the past and the people you wanted to work for do not want to deal with you. They don’t care how good you think you are, they know you are not good enough for their esteemed company. Unfortunate. You spiral into a pit of despair and never recover, never to explore or try for anything else for the rest of your life.
+}
+->play_again
+
+=== anthro ===
+
+# IMAGE: anthro.jpg 
+
+{curiosity>=7:
+You impress your bosses and the inhabitants of societies you’ve studied so much your research is funded for years! You document your travels and all the wild adventures you go on. Your thesis is gorgeous and the envy of all your ex-coworkers from your last ship. You can’t help but feel proud of yourself and what you have accomplished. You even get to keep an ancient mug and for a nerd like you, that is the height of this sun cycle.
+}
+
+{curiosity<7 && curiosity>4:
+Your lack of passion is evident and you hear your coworkers whispering about how your parents pressured you into becoming a scientist. Just because it’s true doesn’t mean they have to say it, right? You try to get into it but sometimes you just get so bored. You watch anime at your desk secretly and count that as living on the edge. At least traveling is fun!
+}
+
+{curiosity<=4:
+A whole weekend you were supposed to be at an archeological dig you spent in a local tavern singing up a karaoke storm. Perhaps understandably, your boss is not too happy. You try to fake you were there but Susan is a snitch with evidence, and you’re immediately fired. Hopefully your mom won’t mind you moving in with her for a while, right? You leave mean comments on Susan’s social media every chance you get.
+}
+->play_again
+
+=== cap ===
+# IMAGE: cap.jpg
+
+{charisma>=7:
+The first crew you captain is a dream team. You are all closer than co-workers and every mission you go on, no matter how boring, is an adventure with these people. Eventually a crew member leaves to pursue a new job, then another settles on a planet they love. They get replaced and the cycle continues until one day you look around you and realise you are the only one left from the original team. The new members are great too, but you can never recapture the magic of that first fleet.
+}
+
+{charisma<7 && charisma>4:
+You get a goldfish to celebrate your promotion to captain, your team listens to you but doesn't respect you very much. You overhear them doing bad impersonations of you in the break room. You cry. Your goldfish is the only one there to comfort you. You see love in his bulging, unblinking eyes.
+}
+ 
+{charisma<=4:
+In a state of desperation you are hired as a captain. Your crew distrusts you and stage a coup while you are grounded on a primitive planet. They leave you behind on the planet to fend for yourself. To the locals you are like a god, mysterious and powerful. You live among the locals your whole life and long after you are gone your likeness is put into art and stories.
+}
+->play_again
+
+=== sec ===
+
+# IMAGE: security.jpg
+
+{aggression>=7:
+Every time you walk into a room, everyone goes quiet and stares at you until you leave. Just because you’re yolked and have a little bit of an anger management problem doesn’t mean you’re not a cool person to play Monopoly with! No one will sit next to you in the canteen.Your reputation precedes you. You work out more to pass the time. You rewatch an ancient inspirational video by Shia LaBeouf every morning. Don’t let your dreams be dreams, you mouth along with him, a single tear trickling down your cheek.
+}
+
+{aggression<7 && aggression>4:
+You gain quite a bit of power in your position but even power can’t make you more likable. You look for companionship but can only get sad pity smooches from grandmas.
+}
+
+{aggression<=4:
+Is this a joke?! As Head of Security, you would need to be ready to fight anyone willing to start something. People don’t take you seriously because you are not scary or intimidating. At all. You aren’t willing to take risks or be the badass you need to be to in times of danger. But it all works out in the end! You go out for coffee and run into the most beautiful human being you’ve ever seen! They heal you of all the hurt you’ve been dealt and save you from yourself.
+}
+->play_again
+
+=== play_again ===
+
+Play again? # CLASS: title
++[YES]
+# RESTART
+ ->start
++[NO]
+ ->END
